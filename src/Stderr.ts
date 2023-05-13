@@ -10,9 +10,8 @@ export type WasmImports = Readonly<{
 }>
 
 export let init = (imports: WasmImports) => {
+  if (wasmImports) return
   wasmImports = imports
-
-  init = () => void 0
 }
 
 export const wasmExports = {

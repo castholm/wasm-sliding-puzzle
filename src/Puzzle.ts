@@ -15,6 +15,7 @@ export type WasmImports = Readonly<{
 }>
 
 export let init = (imports: WasmImports) => {
+  if (wasmImports) return
   wasmImports = imports
 
   for (let i = 0; i < CELL_COUNT; i++) {
