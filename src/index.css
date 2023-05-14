@@ -1,8 +1,11 @@
 @import "./puzzle.css";
-@import "./stderr.css";
 
 :root {
   color-scheme: light dark;
   font-family: sans-serif;
   font-size: 16px;
+}
+
+pre#stderr {
+  white-space: pre-wrap;
 }

@@ -1,7 +1,7 @@
 const std = @import("std");
 const Puzzle = @import("puzzle.zig").Puzzle;
 
-// By declaring these, debug level log messages are logged even in release builds.
+// By declaring these, log messages of all log levels are logged even in release builds.
 pub const std_options = struct {
     pub const log_level = .debug;
 };

@@ -37,7 +37,6 @@ pub const Puzzle = extern struct {
         randomization_attempt_quota: usize,
     ) InitError!void {
         var new = solved;
-
         for (0..randomization_attempt_quota) |_| {
             // Shuffle everything but the last cell (the empty cell).
             rng.shuffle(u8, new.cells[0 .. cell_count - 1]);

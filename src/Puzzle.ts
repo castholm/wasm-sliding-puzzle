@@ -35,8 +35,6 @@ export let init = (imports: WasmImports) => {
 
   // Automatically generate an initial puzzle configuration after everything has been initialized.
   queueMicrotask(() => $newPuzzle.click())
-
-  init = () => void 0
 }
 
 export const wasmExports = {
