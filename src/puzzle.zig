@@ -8,9 +8,9 @@ pub const Puzzle = extern struct {
     cells: [cell_count]u8,
     is_solved: bool,
 
-    // Because this struct will be exposed to JavaScript as a sequence of raw bytes without any
-    // means of automatically obtaining offsets of different fields we use a comptime block here to
-    // verify that our understanding of the struct's representation in memory is correct.
+    // This struct will be exposed to JavaScript as a sequence of raw bytes (without any means of
+    // automatically obtaining offsets of different fields) so we use a comptime block here to
+    // verify that our assumptions about each field's offset are correct.
     comptime {
         std.debug.assert(@offsetOf(Puzzle, "cells") == 0);
         std.debug.assert(@offsetOf(Puzzle, "is_solved") == cell_count);
@@ -54,8 +54,8 @@ pub const Puzzle = extern struct {
         // Adapted from <https://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/>.
         //
         // To test whether a square sliding puzzle is solvable, we need to first count the total
-        // number of inversions present in the puzzle. An inversion is when a tile of a lower number
-        // appears before a tile of a higher number.
+        // number of inversions present in the puzzle. An inversion is when a tile of a higher
+        // number appears before a tile of a lower number.
         //
         // If the size of the puzzle is even, it is solvable if the inversion count is even and the
         // empty cell is on an odd row (0-indexed), or if the inversion count is odd and the empty
