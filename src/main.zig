@@ -91,7 +91,7 @@ pub const os = struct {
 
             const clamped_count = @min(count, std.math.maxInt(isize));
             writeToStderr(buf, clamped_count);
-            return @intCast(isize, clamped_count);
+            return @intCast(clamped_count);
         }
 
         extern "stderr" fn writeToStderr(string_ptr: [*]const u8, string_length: usize) void;
