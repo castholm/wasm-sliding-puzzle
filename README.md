@@ -16,29 +16,20 @@ If you're familiar with traditional web technology and you're curious about Zig 
 start I hope this might serve as a useful starting point for small experiments. Likewise, if you're already comfortable
 with Zig but don't know how to get your code running in browsers this might be a helpful reference.
 
-Suggestions for additional features to implement:
-
-- [ ] Support puzzles of sizes other than 4x4
-- [ ] Move tiles using the arrow keys and/or a gamepad
-- [ ] Track the number of moves made and/or the time taken to solve the puzzle
-  - [ ] Save the N best results to a local high score table
-- [ ] Use pieces of an image instead of numbers for the tiles
-  - [ ] Pick one image at random out of a pool of several images when generating new puzzles
-
 ## Building/running
 
-Requires a recent version of the [Zig compiler](https://ziglang.org/download/) (last tested with
-0.11.0-dev.3107+6547d2331) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (or some other
-equivalent package manager).
+Requires a recent nightly master build of the [Zig compiler](https://ziglang.org/download/#release-master) (last tested
+with 0.12.0-dev.244+f4c9e19bc) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (or some
+other equivalent package manager).
 
 After cloning this repo but before doing anything else, run `npm install` from the repository's root directory to
 install esbuild and the TypeScript compiler.
 
 Then, run `zig build run` to build and bundle everything and launch a local dev server that serves the results.
 
-Passing `-Doptimize=Debug` (the default) to `zig build` will instruct esbuild to also output JavaScript/CSS source maps.
-Passing a release optimization option like `-Doptimize=ReleaseSmall` will (in addition to optimizing the WebAssembly
-output) instruct esbuild to minify all JavaScript/CSS output.
+By default, `zig build` will instruct esbuild to output JavaScript/CSS source maps. Passing a release optimization
+option like `-Doptimize=ReleaseSmall` will (in addition to optimizing the WebAssembly output) instruct esbuild to minify
+all JavaScript/CSS output.
 
 Web output targets the most recent set of browser features and assumes you're using a modern web browser.
 

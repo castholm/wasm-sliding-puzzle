@@ -24,8 +24,9 @@ pub fn build(b: *std.Build) !void {
     // Setting 'rdynamic' to true is required for all declarations marked with 'export' to be
     // included in the compiled artifact (if we don't set this the '.wasm' file will end up empty).
     wasm.rdynamic = true;
-    wasm.override_dest_dir = dest_dir;
-    b.installArtifact(wasm);
+    b.getInstallStep().dependOn(&b.addInstallArtifact(wasm, .{
+        .dest_dir = .{ .override = dest_dir },
+    }).step);
 
     // Install 'index.html' into the root install directory.
     b.installFile("src/index.html", "index.html");

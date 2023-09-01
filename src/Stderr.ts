@@ -17,7 +17,6 @@ export let init = (imports: WasmImports) => {
 export const wasmExports = {
   writeToStderr(stringPtr: number, stringLength: number): void {
     // Replicate writing to the terminal by appending text to a <pre> element.
-    const string = utf8Decoder.decode(new Uint8Array(wasmImports.memory.buffer, stringPtr, stringLength))
-    $stderr.textContent += string
+    $stderr.textContent += utf8Decoder.decode(new Uint8Array(wasmImports.memory.buffer, stringPtr, stringLength), { stream: true })
   },
 } as const
