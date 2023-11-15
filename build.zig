@@ -15,7 +15,7 @@ pub fn build(b: *std.Build) !void {
     // default, but here we want to install the files directly into the root install directory.
     const dest_dir: std.Build.InstallDir = .prefix;
 
-    const wasm = b.addSharedLibrary(.{
+    const wasm = b.addExecutable(.{
         .name = "sliding-puzzle",
         .root_source_file = .{ .path = "src/main.zig" },
         .target = target,
@@ -24,6 +24,8 @@ pub fn build(b: *std.Build) !void {
     // Setting 'rdynamic' to true is required for all declarations marked with 'export' to be
     // included in the compiled artifact (if we don't set this the '.wasm' file will end up empty).
     wasm.rdynamic = true;
+    // The wasm artifact doesn't have a 'main' entry point.
+    wasm.entry = .disabled;
     b.getInstallStep().dependOn(&b.addInstallArtifact(wasm, .{
         .dest_dir = .{ .override = dest_dir },
     }).step);

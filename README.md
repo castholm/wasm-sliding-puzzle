@@ -19,7 +19,7 @@ with Zig but don't know how to get your code running in browsers this might be a
 ## Building/running
 
 Requires a recent nightly master build of the [Zig compiler](https://ziglang.org/download/#release-master) (last tested
-with 0.12.0-dev.244+f4c9e19bc) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (or some
+with 0.12.0-dev.1595+70d8baaec) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (or some
 other equivalent package manager).
 
 After cloning this repo but before doing anything else, run `npm install` from the repository's root directory to
